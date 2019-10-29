@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch Data XHR</title>
+</head>
+<body style="text-align:center">
+    
+   <h3>XHR Response with Vanilla JS and Google API</h3>
+
+   <button id="fetch" style="padding: 10px;outline: 0">Click!</button>
+   <br>
+   <br>
+   <div id="show_data"></div>
+   
+   <script>
+
+        var showData = document.getElementById('show_data');
+
+        var fileId = '';  
+
+        //File id from google drive file
+        /*Click right button to get shareable Link 
+        / Example : https://drive.google.com/open?id=HERE-IS-YOUR-FILE-ID
+        */
+
+        document.getElementById('fetch').addEventListener('click', function(){
+
+        //Link of google drive file
+
+        let file = 'https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media';
+
+        //alt = media -> to read the data from file
+
+        // Access token can be generated with the help of POSTMAN
+        // Check the documentation to how you can generate an access token 
+
+        let accessToken = ''; 
+
+        //Example : 'ya29.Il-pB_kazhkK116Hc_xsR1F78JGGkXcCXfUNxGFWuNHXh1mFANdCLxdq6GABJ3ck-zlbKqsN3VNVxeIZl3bkQadS44ZU1MbTb' 
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('GET', file); 
+
+            xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+
+            //setRequestHeader is essential to set the headers otherwise you will get error
+ 
+            xhr.responseType = 'json';
+
+            xhr.send();
+
+                xhr.onreadystatechange = function() {
+
+                if (this.readyState == 4 && this.status == 200) {
+
+                let responseObj = xhr.response;
+
+                console.log(responseObj);  //console logging the respose
+
+                }
+            };
+        
+        });
+   </script> 
+
+</body>
+</html>
