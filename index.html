@@ -21,25 +21,26 @@
 
         var fileId = '';  
 
-        //File id from google drive file
-        /*Click right button to get shareable Link 
-        / Example : https://drive.google.com/open?id=HERE-IS-YOUR-FILE-ID
-        */
+        /*=================================================================/
+        / File id from google drive file                                   /
+        / Click right button to get shareable Link                         /
+        / Example : https://drive.google.com/open?id=HERE-IS-YOUR-FILE-ID  /
+        /=================================================================*/
 
         document.getElementById('fetch').addEventListener('click', function(){
 
-        //Link of google drive file
+        // Link of google drive file
 
         let file = 'https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media';
 
-        //alt = media -> to read the data from file
+        // alt = media -> to read the data from file
 
         // Access token can be generated with the help of POSTMAN
         // Check the documentation to how you can generate an access token 
 
         let accessToken = ''; 
 
-        //Example : 'ya29.Il-pB_kazhkK116Hc_xsR1F78JGGkXcCXfUNxGFWuNHXh1mFANdCLxdq6GABJ3ck-zlbKqsN3VNVxeIZl3bkQadS44ZU1MbTb' 
+        // Example : 'ya29.Il-pB_kazhkK116Hc_xsR1F78JGGkXcCXfUNxGFWuNHXh1mFANdCLxdq6GABJ3ck-zlbKqsN3VNVxeIZl3bkQadS44ZU1MbTb' 
 
             let xhr = new XMLHttpRequest();
 
@@ -59,7 +60,7 @@
 
                 let responseObj = xhr.response;
 
-                console.log(responseObj);  //console logging the respose
+                console.log(responseObj);  //console logging the response
 
                 }
             };
